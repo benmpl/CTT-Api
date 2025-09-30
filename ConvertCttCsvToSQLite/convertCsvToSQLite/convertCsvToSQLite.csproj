@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="bin\**" />
-    <EmbeddedResource Remove="bin\**" />
-    <None Remove="bin\**" />
+    <Compile Remove="bin/**" />
+    <EmbeddedResource Remove="bin/**" />
+    <None Remove="bin/**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,28 +18,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Database\CTTPortugal.db3">
+    <None Update="Database/CTTPortugal.db3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="todos_apartados\leiame_aps.txt">
+    <None Update="todos_apartados/leiame_aps.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="todos_apartados\readme_aps.txt">
+    <None Update="todos_apartados/readme_aps.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="todos_apartados\todos_aps.txt">
+    <None Update="todos_apartados/todos_aps.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="todos_cp\concelhos.txt">
+    <None Update="todos_cp/concelhos.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="todos_cp\distritos.txt">
+    <None Update="todos_cp/distritos.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="todos_cp\leiame.txt">
+    <None Update="todos_cp/leiame.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="todos_cp\todos_cp.txt">
+    <None Update="todos_cp/todos_cp.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

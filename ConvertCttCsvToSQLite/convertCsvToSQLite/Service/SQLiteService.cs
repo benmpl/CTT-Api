@@ -14,7 +14,7 @@ namespace convertCsvToSQLite.Service
 		{
 			if (this.Connection == null || this.Connection.State == System.Data.ConnectionState.Closed)
 			{
-				string sqlitedb = @".\Database\CTTPortugal.db3";
+				string sqlitedb = @"./Database/CTTPortugal.db3";
 
 				SQLiteConnectionStringBuilder connSB = new SQLiteConnectionStringBuilder
 				{

@@ -53,9 +53,9 @@ namespace convertCsvToSQLite
 
 			var listaDistritos = new List<Distrito>();
 
-			string dados = System.IO.File.ReadAllText(@".\todos_cp\distritos.txt", Encoding.UTF7);
+			string dados = System.IO.File.ReadAllText(@"./todos_cp/distritos.txt", Encoding.UTF7);
 
-			var arrayDados = dados.Split("\r\n");
+			var arrayDados = dados.Split("\n");
 
 			foreach (var item in arrayDados)
 			{
@@ -78,9 +78,9 @@ namespace convertCsvToSQLite
 
 			var listaConcelhos = new List<Concelho>();
 
-			string dados = System.IO.File.ReadAllText(@".\todos_cp\concelhos.txt", Encoding.UTF7);
+			string dados = System.IO.File.ReadAllText(@"./todos_cp/concelhos.txt", Encoding.UTF7);
 
-			var arrayDados = dados.Split("\r\n");
+			var arrayDados = dados.Split("\n");
 
 			foreach (var item in arrayDados)
 			{
@@ -108,9 +108,9 @@ namespace convertCsvToSQLite
 
 			var listaCodigosPostais = new List<CodigoPostal>();
 
-			string dados = System.IO.File.ReadAllText(@".\todos_cp\todos_cp.txt", Encoding.UTF7);
+			string dados = System.IO.File.ReadAllText(@"./todos_cp/todos_cp.txt", Encoding.UTF7);
 
-			var arrayDados = dados.Split("\r\n");
+			var arrayDados = dados.Split("\n");
 
 			foreach (var item in arrayDados)
 			{
@@ -158,9 +158,9 @@ namespace convertCsvToSQLite
 
 			var listaApartados = new List<Apartado>();
 
-			string dados = System.IO.File.ReadAllText(@".\todos_apartados\todos_aps.txt", Encoding.UTF7);
+			string dados = System.IO.File.ReadAllText(@"./todos_apartados/todos_aps.txt", Encoding.UTF7);
 
-			var arrayDados = dados.Split("\r\n");
+			var arrayDados = dados.Split("\n");
 
 			foreach (var item in arrayDados)
 			{
