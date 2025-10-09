@@ -118,7 +118,9 @@ namespace convertCsvToSQLite
 				{
 					var distrito = distritos.Where(x => x.Codigo == item.Split(";")[0]).FirstOrDefault();
 					var concelho = concelhos.Where(x => x.Distrito.Codigo == distrito.Codigo &&
-												   x.Codigo == item.Split(";")[1]).FirstOrDefault();
+					x.Codigo == item.Split(";")[1]).FirstOrDefault();
+
+					var itemData = item.Split(";");
 
 					var cp = new CodigoPostal()
 					{
@@ -126,21 +128,21 @@ namespace convertCsvToSQLite
 						CodigoDistrito = distrito.Codigo,
 						Concelho = concelho,
 						CodigoConcelho = concelho.Codigo,
-						CodigoLocalidade = item.Split(";")[2],
-						NomeLocalidade = item.Split(";")[3],
-						CodigoArteria = item.Split(";")[4],
-						ArteriaTipo = item.Split(";")[5],
-						PrimeiraPreposicao = item.Split(";")[6],
-						ArteriaTitulo = item.Split(";")[7],
-						SegundaPreposicao = item.Split(";")[8],
-						ArteriaDesignacao = item.Split(";")[9],
-						ArteriaInformacaoLocalZona = item.Split(";")[10],
-						Troco = item.Split(";")[11],
-						NumeroPorta = item.Split(";")[12],
-						NomeCliente = item.Split(";")[13],
-						NumeroCodigoPostal = item.Split(";")[14],
-						NumeroExtensaoCodigoPostal = item.Split(";")[15],
-						DesignacaoPostal = item.Split(";")[16]
+						CodigoLocalidade = itemData[2],
+						NomeLocalidade = itemData[3],
+						CodigoArteria = itemData[4],
+						ArteriaTipo = itemData[5],
+						PrimeiraPreposicao = itemData[6],
+						ArteriaTitulo = itemData[7],
+						SegundaPreposicao = itemData[8],
+						ArteriaDesignacao = itemData[9],
+						ArteriaInformacaoLocalZona = itemData[10],
+						Troco = itemData[11],
+						NumeroPorta = itemData[12],
+						NomeCliente = itemData[13],
+						NumeroCodigoPostal = itemData[14],
+						NumeroExtensaoCodigoPostal = itemData[15],
+						DesignacaoPostal = itemData[16]
 					};
 
 					listaCodigosPostais.Add(cp);
