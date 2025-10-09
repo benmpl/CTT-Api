@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using convertCsvToSQLite.Entity;
 using System.Data.SQLite;
 using System.Data.Common;
+using System.Linq;
 
 namespace convertCsvToSQLite.Service
 {
@@ -95,8 +96,33 @@ namespace convertCsvToSQLite.Service
 		{
 			try
 			{
-				foreach (var codigoPostal in codigosPostais)
-				{
+				var chunks = codigosPostais.Chunk(1000);
+				foreach (var chunk in chunks)
+				{	
+					string sqlStr = "INSERT INTO CodigoPostal (CodigoDistrito, CodigoConcelho, CodigoLocalidade, NomeLocalidade, CodigoArteria, ArteriaTipo, PrimeiraPreposicao, ArteriaTitulo, SegundaPreposicao, ArteriaDesignacao, ArteriaInformacaoLocalZona, Troco, NumeroPorta, NomeCliente, NumeroCodigoPostal, NumeroExtensaoCodigoPostal, DesignacaoPostal) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}') ";
+
+					foreach (var bit in chunk) {
+						sqlStr += string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}, {10}, {11}, {12}, {13}, {14}, {15}, {16}",
+							bit.Concelho.Distrito.Codigo,
+							bit.Concelho.Codigo,
+							bit.CodigoLocalidade.Replace("'", ""),
+							bit.NomeLocalidade.Replace("'", ""),
+							bit.CodigoArteria.Replace("'", ""),
+							bit.ArteriaTipo.Replace("'", ""),
+							bit.PrimeiraPreposicao.Replace("'", ""),
+							bit.ArteriaTitulo.Replace("'", ""),
+							bit.SegundaPreposicao.Replace("'", ""),
+							bit.ArteriaDesignacao.Replace("'", ""),
+							bit.ArteriaInformacaoLocalZona.Replace("'", ""),
+							bit.Troco.Replace("'", ""),
+							bit.NumeroPorta.Replace("'", ""),
+							bit.NomeCliente.Replace("'", ""),
+							bit.NumeroCodigoPostal.Replace("'", ""),
+							bit.NumeroExtensaoCodigoPostal.Replace("'", ""),
+							bit.DesignacaoPostal.Replace("'", ""));
+					}
+					Console.WriteLine(sqlStr);
+/*
 					string sql = string.Format("INSERT INTO CodigoPostal (CodigoDistrito, CodigoConcelho, CodigoLocalidade, NomeLocalidade, CodigoArteria, ArteriaTipo, PrimeiraPreposicao, ArteriaTitulo, SegundaPreposicao, ArteriaDesignacao, ArteriaInformacaoLocalZona, Troco, NumeroPorta, NomeCliente, NumeroCodigoPostal, NumeroExtensaoCodigoPostal, DesignacaoPostal) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}') ",
 												codigoPostal.Concelho.Distrito.Codigo,
 												codigoPostal.Concelho.Codigo,
@@ -115,10 +141,11 @@ namespace convertCsvToSQLite.Service
 												codigoPostal.NumeroCodigoPostal.Replace("'", ""),
 												codigoPostal.NumeroExtensaoCodigoPostal.Replace("'", ""),
 												codigoPostal.DesignacaoPostal.Replace("'", ""));
-
-					var cmdLite = new SQLiteCommand(sql, this.Connection);
+					*/
+					var cmdLite = new SQLiteCommand(sqlStr, this.Connection);
 
 					cmdLite.ExecuteNonQuery();
+					
 				}
 			}
 			catch (Exception ex)
