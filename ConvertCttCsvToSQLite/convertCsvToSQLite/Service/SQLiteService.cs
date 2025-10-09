@@ -124,26 +124,7 @@ namespace convertCsvToSQLite.Service
 					}
 					sqlStr = sqlStr.TrimEnd(' ').TrimEnd(',');
 					Console.WriteLine(sqlStr);
-/*
-					string sql = string.Format("INSERT INTO CodigoPostal (CodigoDistrito, CodigoConcelho, CodigoLocalidade, NomeLocalidade, CodigoArteria, ArteriaTipo, PrimeiraPreposicao, ArteriaTitulo, SegundaPreposicao, ArteriaDesignacao, ArteriaInformacaoLocalZona, Troco, NumeroPorta, NomeCliente, NumeroCodigoPostal, NumeroExtensaoCodigoPostal, DesignacaoPostal) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}') ",
-												codigoPostal.Concelho.Distrito.Codigo,
-												codigoPostal.Concelho.Codigo,
-												codigoPostal.CodigoLocalidade.Replace("'", ""),
-												codigoPostal.NomeLocalidade.Replace("'", ""),
-												codigoPostal.CodigoArteria.Replace("'", ""),
-												codigoPostal.ArteriaTipo.Replace("'", ""),
-												codigoPostal.PrimeiraPreposicao.Replace("'", ""),
-												codigoPostal.ArteriaTitulo.Replace("'", ""),
-												codigoPostal.SegundaPreposicao.Replace("'", ""),
-												codigoPostal.ArteriaDesignacao.Replace("'", ""),
-												codigoPostal.ArteriaInformacaoLocalZona.Replace("'", ""),
-												codigoPostal.Troco.Replace("'", ""),
-												codigoPostal.NumeroPorta.Replace("'", ""),
-												codigoPostal.NomeCliente.Replace("'", ""),
-												codigoPostal.NumeroCodigoPostal.Replace("'", ""),
-												codigoPostal.NumeroExtensaoCodigoPostal.Replace("'", ""),
-												codigoPostal.DesignacaoPostal.Replace("'", ""));
-					*/
+
 					var cmdLite = new SQLiteCommand(sqlStr, this.Connection);
 
 					cmdLite.ExecuteNonQuery();
