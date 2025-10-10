@@ -123,7 +123,6 @@ namespace convertCsvToSQLite.Service
 							bit.DesignacaoPostal.Replace("'", ""));
 					}
 					sqlStr = sqlStr.TrimEnd(' ').TrimEnd(',');
-					Console.WriteLine(sqlStr);
 
 					var cmdLite = new SQLiteCommand(sqlStr, this.Connection);
 
